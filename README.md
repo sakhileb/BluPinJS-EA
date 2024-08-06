@@ -13,6 +13,7 @@
 
 ## General Information
 - A way to trade the commodity markets with ease. (Works on GOLD or USOIL)
+- This script is still under development do not use until stated otherwise.
 
 
 ## Features
