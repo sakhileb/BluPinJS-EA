@@ -17,7 +17,6 @@
 
 
 ## Features
-List the ready features here:
 - Internal/External liquidity - With Signals
 - Order Blocks - With Signals
 - Breaker Blocks - With Signals
