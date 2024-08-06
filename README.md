@@ -24,8 +24,7 @@
 - Power Of 3 - With Signals
 - Judas Swing - With Signals
 - 714 Method - With Signals
-- On Chart Signals
-- Trade Ideas
+- On Chart Signals & Trade Ideas
 - Goal Setting & Account Management Techniques (E.G: for an account $100, use lot sie 0.02, set stop loss to 20 points and take profit to 60 points)
 
 ## Project Status
