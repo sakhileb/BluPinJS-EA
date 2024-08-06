@@ -12,13 +12,19 @@
 
 
 ## General Information
-- A way to trade the commodity markets with ease. (Works on GOLD or USOIL)
+- A way to trade the commodity markets with ease. (Works on GOLD, SILVER & USOIL)
 - This script is still under development do not use until stated otherwise.
 
 
 ## Features
 List the ready features here:
-- Session Chart Delineation
+- Internal/External liquidity - With Signals
+- Order Blocks - With Signals
+- Breaker Blocks - With Signals
+- Fair Valur Gaps - With Signals
+- Power Of 3 - With Signals
+- Judas Swing - With Signals
+- 714 Method - With Signals
 - On Chart Signals
 - Trade Ideas
 
