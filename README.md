@@ -1,7 +1,7 @@
 # BluPin Capital Trading Strategy
 
 # BluPinJS
-> BluPinJS gives traders the ability to read the markets with ease no matter the level you are in. This Indicator gives traders the ability to identify and trade different market conditions. It does not focus on one trading strategy but it adjusts according to the current opportunity offered.
+> BluPinJS gives traders the ability to make informed decisions about the markets with ease no matter the level you are in. This Indicator gives traders the ability to identify and trade different market conditions. It does not focus on one trading strategy but it adjusts according to the current opportunity offered.
 <!-- > Live demo [_here_](https://files.infodot.co.za). -->
 
 ## Table of Contents
