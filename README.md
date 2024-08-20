@@ -17,11 +17,8 @@
 
 
 ## Features
-- Internal/External liquidity - With Signals
-- Order Blocks - With Signals
-- Breaker Blocks - With Signals
-- Fair Valur Gaps - With Signals
 - Power Of 3 - With Signals
+- ICT Silver Bullet - With Signals
 - Judas Swing - With Signals
 - 714 Method - With Signals
 - On Chart Signals & Trade Ideas
