@@ -26,7 +26,7 @@
 - Stage 1: Currently working on the trading sessions, I noticed that this script works best during the london session and just before the new york session, so we have narrowed the script down to two trading strategies for better results, and we'll probably add more once we've tested these two and are sure that they are effective.
 
 ## Contact
-Created by [BluPin Capital](https://www.blupincapital.com/)
+Created by [BluPin Capital](https://capital.blupininc.com/)
 
 
 <!-- Optional -->
