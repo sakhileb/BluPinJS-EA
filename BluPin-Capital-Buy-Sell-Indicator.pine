@@ -1,11 +1,10 @@
 //@version=3
-strategy(title="BluPin Capital Buy/Sell Signal Strategy", overlay=true, commission_type=strategy.commission.percent, commission_value=0.025, default_qty_type=strategy.cash, default_qty_value=10000, initial_capital=10000, slippage=0)
+strategy(title="BluPin Capital Buy/Sell Signal Strategy", overlay=true)
 
 sources = input(defval=close, title="Source")
 isHA = input(false, "Use HA Candles", bool)
 src = isHA ? security(heikenashi(tickerid), period, sources) : sources
 // Sampling Period
-// Settings for 5min chart, BTCUSDC. For Other coin, change the paremeters
 
 per = input(defval=50, minval=1, title="Sampling Period")
 
