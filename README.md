@@ -12,18 +12,18 @@
 
 
 ## General Information
-- A way to trade the commodity markets with ease. (Works on GOLD, SILVER & USOIL)
+- A way to trade the commodity markets with ease. (Works on GOLD, SILVER, USOIL, US30 & NAS100)
 - This script is still under development do not use until stated otherwise.
 
 
 ## Features
-- ICT Silver Bullet (AM & PM Sessions) - With Signals
-- 714 Method - With Signals
+- Buy / Sell Signals When Opportunities Open Up.
+- Supports Multiple Time Frames From H4 - M5
 
 ## Project Status
 - Project Status: _Development_.
 - Vesion 0.01
-- Stage 1: Currently working on the trading sessions, I noticed that this script works best during the london session and just before the new york session, so we have narrowed the script down to two trading strategies for better results, and we'll probably add more once we've tested these two and are sure that they are effective.
+- Stage 1: Currently working on the time frames, I noticed that this script works best on the H4 time frame, so we have narrowed the script down to higher time frames for better results, and we'll probably add more once we've tested this method and are sure that it is effective.
 
 ## Contact
 Created by [BluPin Capital](https://capital.blupininc.com/)
