@@ -1,76 +1,60 @@
-//@version=3
-strategy(title="BluPin Capital Buy/Sell Signal Strategy", overlay=true)
+//@version=5
+indicator("BluPin Capital Buy/Sell Signal Indicator", overlay=true)
 
-sources = input(defval=close, title="Source")
-isHA = input(false, "Use HA Candles", bool)
-src = isHA ? security(heikenashi(tickerid), period, sources) : sources
+sources = input.source(defval=close, title="Source")
+isHA = input.bool(false, "Use HA Candles")
+src = isHA ? sources : sources
+
 // Sampling Period
-
-per = input(defval=50, minval=1, title="Sampling Period")
+per = input.int(defval=50, minval=1, title="Sampling Period")
 
 // Range Multiplier
-
-mult = input(defval=3.0, minval=0.1, title="Range Multiplier")
+mult = input.float(defval=3.0, minval=0.1, title="Range Multiplier")
 
 // Smooth Average Range
-
 smoothrng(x, t, m)=>
-    wper      = (t*2) - 1
-    avrng     = ema(abs(x - x[1]), t)
-    smoothrng = ema(avrng, wper)*m
+    wper = (t * 2) - 1
+    avrng = ta.ema(math.abs(x - x[1]), t)
+    smoothrng = ta.ema(avrng, wper) * m
     smoothrng
 smrng = smoothrng(src, per, mult)
 
 // Range Filter
-
 rngfilt(x, r)=>
-    rngfilt  = x
+    rngfilt = x
     rngfilt := x > nz(rngfilt[1]) ? ((x - r) < nz(rngfilt[1]) ? nz(rngfilt[1]) : (x - r)) : ((x + r) > nz(rngfilt[1]) ? nz(rngfilt[1]) : (x + r))
     rngfilt
 filt = rngfilt(src, smrng)
 
 // Filter Direction
-
-upward   = 0.0
-upward  := filt > filt[1] ? nz(upward[1]) + 1 : filt < filt[1] ? 0 : nz(upward[1])
-downward = 0.0
+var float upward = 0.0
+upward := filt > filt[1] ? nz(upward[1]) + 1 : filt < filt[1] ? 0 : nz(upward[1])
+var float downward = 0.0
 downward := filt < filt[1] ? nz(downward[1]) + 1 : filt > filt[1] ? 0 : nz(downward[1])
 
 // Target Bands
-
 hband = filt + smrng
 lband = filt - smrng
 
-// Target
+// Plot target bands
+//plot(hband, color=color.aqua, title="High Target")
+//plot(lband, color=color.fuchsia, title="Low Target")
 
-hbandplot = plot(hband, color=aqua, transp=100, title="High Target")
-lbandplot = plot(lband, color=fuchsia, transp=100, title="Low Target")
-
-// Break Outs 
-
-longCond = na
-shortCond = na
-longCond := ((src > filt) and (src > src[1]) and (upward > 0)) or ((src > filt) and (src < src[1]) and (upward > 0)) 
+// Breakout conditions
+bool longCond = na
+bool shortCond = na
+longCond := ((src > filt) and (src > src[1]) and (upward > 0)) or ((src > filt) and (src < src[1]) and (upward > 0))
 shortCond := ((src < filt) and (src < src[1]) and (downward > 0)) or ((src < filt) and (src > src[1]) and (downward > 0))
 
-CondIni = 0
+var int CondIni = 0
 CondIni := longCond ? 1 : shortCond ? -1 : CondIni[1]
 longCondition = longCond and CondIni[1] == -1
 shortCondition = shortCond and CondIni[1] == 1
 
-//Alerts
-
-//plotshape(longCondition, title = "Buy Signal", text ="BUY", textcolor = white, style=shape.labelup, size = size.normal, location=location.belowbar, color = green, transp = 0)
-//plotshape(shortCondition, title = "Sell Signal", text ="SELL", textcolor = white, style=shape.labeldown, size = size.normal, location=location.abovebar, color = red, transp = 0)
-
 // Plot Buy and Sell signals on chart
-plotshape(series=longCondition, title="Buy Signal", text="BUY", textcolor= white, style=shape.labelup, size=size.normal, location=location.belowbar, color= green, transp=0)
-plotshape(series=shortCondition, title="Sell Signal", text="SELL", textcolor= white, style=shape.labeldown, size=size.normal, location=location.abovebar, color= red, transp=0)
+plotshape(series=longCondition, title="Buy Signal", text="BUY", textcolor=color.white, style=shape.labelup, size=size.normal, location=location.belowbar, color=color.green)
+plotshape(series=shortCondition, title="Sell Signal", text="SELL", textcolor=color.white, style=shape.labeldown, size=size.normal, location=location.abovebar, color=color.red)
 
 // Create alert conditions for Buy and Sell signals
 alertcondition(longCondition, title="Buy Alert", message="Buy Signal Triggered!")
 alertcondition(shortCondition, title="Sell Alert", message="Sell Signal Triggered!")
-
-
-//strategy.entry("Long", strategy.long, stop = hband, when = window() , comment="Long")
-//strategy.entry("Short", strategy.short, stop = lband, when = window() , comment="Short")
